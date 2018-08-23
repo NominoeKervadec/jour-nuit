@@ -1,0 +1,5 @@
+{"name": "jour-nuit",
+ "description": "switch between gtk themes",
+ "uuid": "jour-nuit@good.stuff",
+ "shell-version": ["3.28.3"]
+}
