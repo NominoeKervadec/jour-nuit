@@ -1,13 +1,12 @@
 const St = imports.gi.St;
 const Main = imports.ui.main;
 const Util = imports.misc.util;
+const Gio = imports.gi.Gio;
 
 let text, button;
 let _dark = 'Arc';
 let _darker = 'Arc-Dark';
-let _themeName = _darker;
-
-
+let _themeName = _dark;
 
 function changeTheme() {
     let _stylesheet = null;
@@ -29,7 +28,9 @@ function init() {
                           track_hover: true });
     let icon = new St.Icon({ icon_name: 'weather-few-clouds-symbolic',
                              style_class: 'system-status-icon' });
-
+    let schema = new Gio.Settings({ schema: "org.gnome.desktop.interface"});
+    _themeName = schema.get_user_value("gtk-theme").get_string()[0];
+    
     button.set_child(icon);
     button.connect('button-press-event', changeTheme);
 }
